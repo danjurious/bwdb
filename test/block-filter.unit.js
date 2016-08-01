@@ -43,4 +43,13 @@ describe('Wallet Block Filter', function() {
       transactions.should.deep.equal([]);
     });
   });
+	describe('#filterAddress', function() {
+		it('will return the filtered deltas with addresses that match', function() {
+			var filter = new BlockFilter({
+        network: bitcore.Networks.testnet,
+        addressFilter: BloomFilter.create(100, 0.1)
+      });
+			filter.filterAddress({}).should.equal(false);
+		});
+	});
 });
